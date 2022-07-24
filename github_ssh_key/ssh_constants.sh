@@ -1,0 +1,7 @@
+#!/bin/bash
+
+KEY_DESCRIPTION="github"
+KEY_ALGORITHM="ed25519"
+KEY_PATH="${HOME}/.ssh/id_${KEY_ALGORITHM}_${KEY_DESCRIPTION}"
+PUB_KEY_PATH="${KEY_PATH}.pub"
+
