@@ -1,5 +1,5 @@
 #! /bin/bash
 
 alias ll="ls -lhF"
-alias la="ll -a"
+alias la="LC_COLLATE=C ll -a"
 alias l="ls -CF"
