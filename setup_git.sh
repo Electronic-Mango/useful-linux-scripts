@@ -6,3 +6,6 @@ git config --global user.email "78230210+Electronic-Mango@users.noreply.github.c
 
 # Configure default editor
 git config --global core.editor vim
+
+# Configure default branch name
+git config --global init.defaultBranch main
