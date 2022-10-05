@@ -1,8 +1,9 @@
 #! /bin/bash
 
-if [[ -z "${SSH_AUTH_SOCK}" ]]; then
-    eval "$(ssh-agent -s)"
-fi > /dev/null
+ssh-add -lq &> /dev/null
+if [ "$?" == 2 ]; then
+    eval "$(ssh-agent -s)" > /dev/null
+fi
 
 for ssh_key in $(find ~/.ssh/ | grep "id_" | grep -v "\.pub$"); do
     ssh-add -q "${ssh_key}"
