@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 ssh-add -lq &> /dev/null
 if [ "$?" == 2 ]; then

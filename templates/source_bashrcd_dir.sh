@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Source files in "~/.bashrc.d/" subdirectory.
 # You may want to put all your additions into a separate files

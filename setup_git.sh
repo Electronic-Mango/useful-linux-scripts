@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Configure user
 git config --global user.name "Electronic Mango"

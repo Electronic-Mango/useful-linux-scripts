@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 KEY_DESCRIPTION="github"
 KEY_ALGORITHM="ed25519"

@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 alias ll="ls -lhF"
 alias la="LC_COLLATE=C ll -a"

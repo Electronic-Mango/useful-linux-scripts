@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Update package list
 echo "Updating package list..."
@@ -68,4 +68,3 @@ echo "Creating Docker Unix group..."
 sudo groupadd docker
 sudo usermod -aG docker "${USER}"
 newgrp docker
-
