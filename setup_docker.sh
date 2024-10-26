@@ -5,30 +5,39 @@ echo "Updating package list..."
 sudo apt update
 
 # Remove old Docker versions
-echo "Removing old Docker versions..."
-sudo apt remove -y docker
-sudo apt remove -y docker-engine
-sudo apt remove -y docker.io
-sudo apt remove -y containerd
-sudo apt remove -y runc
+echo "Removing old Docker packages..."
+sudo apt remove -y \
+    containerd \
+    docker-compose \
+    docker-doc \
+    docker.io \
+    podman-docker \
+    runc
 
-# Add Docker GPG key
-echo "Adding Docker GPG key..."
-sudo apt install -y \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+# Add Docker's official GPG key:
+echo "Adding Docker's GPG key..."
+sudo apt update
+sudo apt install -y ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo "Adding repository to Apt sources..."
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+  bookworm stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
 
 # Install Docker Engine
 echo "Installing Docker Engine..."
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt install -y \
+    docker-ce \
+    docker-ce-cli \
+    containerd.io \
+    docker-buildx-plugin \
+    docker-compose-plugin
 
 # Start Docker on boot
 echo "Configuring Docker to start on boot..."
