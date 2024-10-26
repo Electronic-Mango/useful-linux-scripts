@@ -48,6 +48,21 @@ sudo systemctl enable containerd.service
 echo "Verifying installation..."
 sudo docker run hello-world
 
+# Configure logging driver
+echo "Configuring logging driver..."
+daemon_json="/etc/docker/daemon.json"
+sudo touch "${daemon_json}"
+sudo bash -c "cat > ${daemon_json}" <<EOL
+{
+  "log-driver": "local"
+}
+EOL
+echo "Saved ${daemon_json} contents:"
+sudo cat "${daemon_json}"
+echo "Validating ${daemon_json}..."
+dockerd --validate --config-file="${daemon_json}"
+echo "Docker logging driver: $(docker info --format '{{.LoggingDriver}}')"
+
 # Create Docker Unix group
 echo "Creating Docker Unix group..."
 sudo groupadd docker
