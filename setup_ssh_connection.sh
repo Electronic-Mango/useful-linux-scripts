@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ $# -ne 2 ]]; then
+    echo "Usage: $(basename "$0") SERVER USER"
+    exit -1
+fi
+
 SERVER="${1}"
 USER="${2}"
 KEY_DESCRIPTION="${SERVER}"
