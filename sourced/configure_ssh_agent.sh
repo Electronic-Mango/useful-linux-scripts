@@ -4,9 +4,5 @@ ssh-add -lq &> /dev/null
 if [ "$?" == 2 ]; then
     eval "$(ssh-agent -s)" > /dev/null
 fi
-
-for ssh_key in $(find ~/.ssh/ | grep "id_" | grep -v "\.pub$"); do
-    ssh-add -q "${ssh_key}"
-done
-
+find "${HOME}" -type f -path "${HOME}/.ssh/*" -name "id_*" -not -name "*.pub" -exec ssh-add -q {} \;
 trap "kill ${SSH_AGENT_PID}" 0
