@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-alias ll="ls -lhF"
+alias ls="ls -F --color=auto --group-directories-first"
+alias ll="ls -lh"
 alias la="LC_COLLATE=C ll -a"
-alias l="ls -CF"
+alias l="ls"
