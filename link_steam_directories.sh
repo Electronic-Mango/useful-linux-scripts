@@ -20,6 +20,22 @@ function link_data_in_installation_dir() {
     fi
 }
 
+function is_ignored() {
+    local game_name="${1}"
+    local ignored_entries=(
+        "Steamworks Common Redistributables"
+        "Steam Linux Runtime"
+        "Proton"
+    )
+    for ignored_entry in "${ignored_entries[@]}"; do
+        if [[ "${game_name}" =~ "${ignored_entry}" ]]; then
+            true
+            return
+        fi
+    done
+    false
+}
+
 function find_in_manifest() {
     local manifest_file_path="${1}"
     local field_name="${2}"
@@ -28,6 +44,10 @@ function find_in_manifest() {
 
 function link_directories() {
     local manifest_file_path="${1}"
+    local name=$(find_in_manifest "${manifest_file_path}" "name")
+    if is_ignored "${name}"; then
+        return
+    fi
     local app_id=$(find_in_manifest "${manifest_file_path}" "appid")
     local install_dir_name=$(find_in_manifest "${manifest_file_path}" "installdir")
     local apps_path="$(dirname "${manifest_file_path}")"
@@ -41,7 +61,8 @@ function link_directories() {
 }
 
 function main() {
-    find . -type f -name "appmanifest_*.acf" -print0 | while IFS= read -r -d '' manifest_file_path; do
+    local steam_path="${1-$(find ~ -type d -path "*/steamapps/common" -not -ipath "*trash*" | xargs dirname | xargs dirname)}"
+    find "${steam_path}" -type f -name "appmanifest_*.acf" -print0 | while IFS= read -r -d '' manifest_file_path; do
         link_directories "${manifest_file_path}"
     done
 }
