@@ -10,3 +10,6 @@ if [[ -d ~/.zshrc.d ]]; then
     done
 fi
 unset rc
+
+# Add binaries to PATH
+. "$HOME/.local/bin/env"
