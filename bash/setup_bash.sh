@@ -20,7 +20,7 @@ function link() {
     ln -s "${full_source_path}" "${target_path}"
 }
 
-link "${HOME}/.bash_aliases" "templates/source_bashrcd_dir.sh" "CHECK .bashrc IF THIS IS NEEDED! "
+link "${HOME}/.bash_aliases" "$(dirname $0)/templates/source_bashrcd_dir.sh" "CHECK .bashrc IF THIS IS NEEDED! "
 echo
-link "${HOME}/.bashrc.d" "sourced"
+link "${HOME}/.bashrc.d" "$(dirname $0)/sourced"
 
