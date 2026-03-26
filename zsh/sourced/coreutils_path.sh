@@ -1,3 +1,3 @@
 #!/usr/bin/env zsh
 
-export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
+export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}"
