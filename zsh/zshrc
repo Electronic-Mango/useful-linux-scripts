@@ -12,4 +12,6 @@ fi
 unset rc
 
 # Add binaries to PATH
-. "$HOME/.local/bin/env"
+if [[ -f "${HOME}/.local/bin/env" ]]; then
+    source "${HOME}/.local/bin/env"
+fi
