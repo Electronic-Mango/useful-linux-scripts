@@ -1,5 +1,5 @@
 path=(
-    $HOMEBREW_PREFIX/opt/*/libexec/*bin
+    $HOMEBREW_PREFIX/opt/*/libexec/*bin(N)
     $path
 )
 export PATH
