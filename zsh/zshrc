@@ -1,6 +1,3 @@
-# Custom prompt
-export PROMPT="%F{green}%n%f %F{white}%~%f %(!.#.$) "
-
 # User specific aliases and functions
 for rc in ~/.zshrc.d/**/*(-.N); do
     source "${rc}"
