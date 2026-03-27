@@ -1,0 +1,5 @@
+# User specific aliases and functions, loaded at new interactive shell
+for rc in ~/.zshenv.d/**/*(-.N); do
+    source "${rc}"
+done
+unset rc
