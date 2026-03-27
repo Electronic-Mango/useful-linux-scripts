@@ -1,0 +1,17 @@
+# Pick one option
+
+# User specific aliases and functions (standard)
+if [[ -d ~/.bashrc.d ]]; then
+    for rc in ~/.bashrc.d/*; do
+        if [[ -f "${rc}" ]]; then
+            source "${rc}"
+        fi
+    done
+fi
+
+# User specific aliases and functions (recursive)
+if [[ -d ~/.bashrc.d ]]; then
+    while IFS="" read -r -d "" rc; do
+        source "${rc}"
+    done < <(find -L ~/.bashrc.d/ -mindepth 1 -type f -print0)
+fi
