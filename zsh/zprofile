@@ -1,0 +1,5 @@
+# User specific aliases and functions, loaded at login
+for zp in ~/.zprofile.d/**/*(-.N); do
+    source "${zp}"
+done
+unset zp

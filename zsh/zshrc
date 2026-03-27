@@ -1,4 +1,4 @@
-# User specific aliases and functions
+# User specific aliases and functions, loaded at new interactive shell
 for rc in ~/.zshrc.d/**/*(-.N); do
     source "${rc}"
 done
