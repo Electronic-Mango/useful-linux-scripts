@@ -2,10 +2,7 @@
 export PROMPT="%F{green}%n%f %F{white}%~%f %(!.#.$) "
 
 # User specific aliases and functions
-if [[ -d ~/.zshrc.d ]]; then
-    for rc in ~/.zshrc.d/**/*(-.); do
-        source "${rc}"
-    done
-fi
+for rc in ~/.zshrc.d/**/*(-.N); do
+    source "${rc}"
+done
 unset rc
-
