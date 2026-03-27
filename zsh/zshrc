@@ -3,15 +3,9 @@ export PROMPT="%F{green}%n%f %F{white}%~%f %(!.#.$) "
 
 # User specific aliases and functions
 if [[ -d ~/.zshrc.d ]]; then
-    for rc in ~/.zshrc.d/*; do
-        if [[ -f "${rc}" ]]; then
-            source "${rc}"
-        fi
+    for rc in ~/.zshrc.d/**/*(-.); do
+        source "${rc}"
     done
 fi
 unset rc
 
-# Add binaries to PATH
-if [[ -f "${HOME}/.local/bin/env" ]]; then
-    source "${HOME}/.local/bin/env"
-fi
