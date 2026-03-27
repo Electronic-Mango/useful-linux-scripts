@@ -1,5 +1,5 @@
 # Custom prompt
-export PROMPT="%F{green}%n%f %B%F{white}%~%f%b %(!.#.$) "
+export PROMPT="%F{green}%n%f %F{white}%~%f %(!.#.$) "
 
 # User specific aliases and functions
 if [[ -d ~/.zshrc.d ]]; then
