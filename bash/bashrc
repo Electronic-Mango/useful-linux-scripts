@@ -8,6 +8,7 @@ if [[ -d ~/.bashrc.d ]]; then
         fi
     done
 fi
+unset rc
 
 # User specific aliases and functions (recursive)
 if [[ -d ~/.bashrc.d ]]; then
@@ -15,3 +16,4 @@ if [[ -d ~/.bashrc.d ]]; then
         source "${rc}"
     done < <(find -L ~/.bashrc.d/ -mindepth 1 -type f -print0)
 fi
+unset rc
